@@ -1,0 +1,39 @@
+version: "3.1"
+services:
+  test:
+    build: .
+    container_name: test
+    hostname: test
+    ports:
+      - "2121:22"
+    volumes:
+      - ./.ssh:/home/user/.ssh
+      - ./.atom:/home/user/.atom
+#    env_file:
+#      - test.env
+#    secrets:
+#      - DB_PASS_FILE
+#      - ADMIN_PASSWORD_FILE
+#    volumes:
+#      - ./settings.json:/opt/etherpad-lite/settings.json
+#    restart: always
+#    labels:
+#      - "traefik.enable=true"
+#      - "traefik.http.routers.plantuml.rule=Host(`plantuml.docker.lab`)"
+#      - "traefik.http.services.plantuml.loadbalancer.server.port=8080"
+#      - "traefik.docker.network=traefik_proxy"
+#    networks:
+#      - traefik_proxy
+    networks:
+      - default
+
+#networks:
+#  traefik_proxy:
+#    external:
+#      name: traefik_proxy
+
+#secrets:
+#  POSTGRES_PASSWORD_FILE:
+#    file: ./crypto/javax.persistence.jdbc.password_FILE
+#  DB_PASS_FILE:
+#    file: ./crypto/javax.persistence.jdbc.password_FILE
